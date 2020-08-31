@@ -1,0 +1,40 @@
+.mh-application {
+  font-size: 14px;
+  & header {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: underline;
+  }
+
+  &__applicant-info {
+    font-weight: normal;
+    color: var(--text);
+
+    margin-top: 10px;
+
+    & .name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+
+    & .line {
+      display: inline-block;
+      height: 3px;
+      width: 10px;
+      border-top: 1px solid #87878766;
+      margin-right: 6px;
+    }
+  }
+
+  &__traits {
+    margin-top: 10px;
+
+    &--inline-block {
+      display: inline-block;
+      width: 142px;
+      margin-right: 12px;
+    }
+  }
+}

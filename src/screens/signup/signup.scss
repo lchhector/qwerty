@@ -1,0 +1,226 @@
+:root {
+  --primary: #7fabe0;
+  --text: #878787;
+  --secondary: #E5EEF9;
+}
+
+.mh-signup {
+  display: grid;
+  grid-template-areas: 
+  'sideImage signupForm';
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+
+  &__side-image {
+    grid-area: sideImage;
+    position: relative;
+    background-color: var(--secondary);
+
+    &__mh-logo {
+      position: absolute;
+      top: 0.5rem;
+      left: 1rem;
+      height: 70px;
+      width: 70px;
+      object-fit: contain;
+    }
+  }
+
+  &__content {
+    grid-area: signupForm;
+    padding-top: 8rem;
+    padding-bottom: 2rem;
+    width: 80%;
+    justify-self: center;
+
+    &__header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+
+      &__1st-step {
+        white-space: nowrap;
+      }
+
+      &__1 {
+        display: inline-block;
+        text-align: center;
+        line-height: 50px;
+        border-radius: 50px;
+        height: 50px;
+        width: 50px;
+        min-width: 50px;
+        background-color: var(--primary);
+        font-size: 40px;
+        font-weight: bold;
+        color: white;
+        white-space: nowrap;
+      }
+
+      &__1-text {
+        margin-left: 10px;
+        font-size: 40px;
+        font-weight: bold;
+        color: var(--primary);
+        white-space: nowrap;
+      }
+
+      &__line {
+        display: inline-block;
+        height: 8px;
+        width: 25px;
+        min-width: 10px;
+        border-top: 1px solid #87878762;
+        margin-left: 10px;
+      }
+
+      &__2nd-step {
+        display: block;
+        white-space: nowrap;
+        margin-bottom: 10px;
+      }
+
+      &__2 {
+        display: inline-block;  
+        text-align: center;
+        line-height: 20px;
+        font-size: 14px;
+        font-weight: normal;
+        border-radius: 50px;
+        border: 1px solid var(--text);
+        height: 20px;
+        width: 20px;
+        min-width: 20px;
+        color: var(--text);
+        margin-left: 10px;
+      }
+
+      &__2-text {
+        font-size: 14px;
+        font-weight: normal;
+        color: var(--text);
+        margin-left: 10px;
+        white-space: nowrap;
+      }
+    }
+
+    &__form {
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--text);
+
+      margin-top: 20px;
+
+      &__input-text {
+        height: 30px;
+        width: 100%;
+        max-width: 500px;
+        border: 1px solid;
+        border-color: #7fabe044;
+        border-radius: 5px;
+        font-family: 'Poppins', sans-serif;
+
+        padding-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 30px;
+
+        &:focus {
+          outline: none;
+          border: 1px solid var(--primary);
+        }
+      }
+
+      &__checkboxes {
+        display: grid;
+        gap: 20px 0px;
+        grid-template-areas:
+        'candidate company'
+        'terms terms';
+        grid-template-columns: 1fr 1fr;
+        white-space: nowrap;
+        max-width: 510px;
+
+        &__terms {
+          grid-area: terms;
+        }
+      }
+
+      &__button {
+        font-family: 'Poppins', sans-serif;
+        font-weight: bold;
+        color: white;
+        background-color: var(--primary);
+        padding: 0.7rem 0px;
+        width: 100%;
+        max-width: 510px;
+        border-radius: 5px;
+        border: none;
+
+        margin-top: 40px;
+        cursor: pointer;
+      }
+    }
+
+    &__footer {
+      font-size: 14px;
+      font-weight: normal;
+      color: var(--text);
+      white-space: nowrap;
+      margin-top: 40px;
+
+      & a {
+        text-decoration: underline;
+        color: var(--text);
+        font-weight: bold;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+.testCheckbox {
+  height: 50px;
+  font-size: 30px;
+}
+
+@media (max-width: 1080px) {
+  .mh-signup {
+    grid-template-areas: 'sideImage signupForm';
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .mh-signup__content__form__checkboxes {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    'candidate'
+    'company'
+    'terms';
+    gap: 0px;
+  }
+
+  .mh-signup {
+    grid-template-areas: 'sideImage signupForm';
+    grid-template-columns: 1fr 4fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .mh-signup {
+    grid-template-areas: 'signupForm';
+    grid-template-columns: 1fr;
+  }
+  .mh-signup__side-image {
+    display: none;
+  }
+
+  .mh-signup__content__header {
+    flex-direction: column;
+  }
+
+  .mh-signup__content__header__line {
+    display: none;
+  }
+}

@@ -1,0 +1,47 @@
+.mh-checkbox {
+  height: 15px;
+  width: 15px;
+  outline: none !important;
+  // -webkit-appearance: none;
+  // -moz-appearance: none;
+  // appearance: none;
+  opacity: 0;
+  border: 1px solid #7fabe044 !important;
+  cursor: pointer;
+
+  &:checked ~ .mh-checkbox-custom {
+    background-color: white;
+  }
+}
+
+.mh-checkbox-custom {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  border: 1px solid #7fabe044;
+  border-radius: 3px;
+
+  &::after {
+    position: absolute;
+    content: "";
+    left: 15px;
+    top: 15px;
+    height: 0px;
+    width: 0px;
+    border-radius: 5px;
+    border: solid blue;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(0deg) scale(0);
+    -ms-transform: rotate(0deg) scale(0);
+    transform: rotate(0deg) scale(0);
+    opacity: 1;
+  }
+}
+
+.mh-label {
+  font-weight: normal;
+  margin-left: 10px;
+  margin-right: 20px;
+  cursor: pointer;
+  border: 1px solid gray;
+}

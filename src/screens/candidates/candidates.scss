@@ -1,0 +1,108 @@
+.mh-candidates {
+  // display: grid;
+  // grid-template-columns: 2fr 1fr;
+  // grid-template-areas: 
+  // 'application application-listing';
+  display: flex;
+  flex-direction: row;
+
+  &__application {
+    box-sizing: border-box;
+    width: 50%;
+    padding: 5% 8%;
+    overflow-y: scroll;
+
+    & header {
+      color: var(--primary);
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    &__candidate-info {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      &__details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        & header {
+          text-decoration: none;
+          font-weight: bold;
+          color: black;
+        }
+      }
+
+      &__buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        & button {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 0 15px;
+          height: 40px;
+          width: 200px;
+          border-radius: 4px;
+          font-family: "Poppins", sans-serif;
+          line-height: 40px;
+        }
+
+        & .btn-interview-candidate {
+          border: none;
+          background-color: #a9e2e7;
+
+          & img {
+            height: 20px;
+            width: 20px;
+            align-self: center;
+            margin-right: 10px;
+          }
+        }
+
+        & .btn-reject-and-review {
+          margin-top: 8px;
+          border: 1px solid #FF6F6F;
+          color: #FF6F6F;
+          background-color: transparent;
+
+          & img {
+            height: 14px;
+            width: 14px;
+            align-self: center;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+
+    &__accordions {
+      margin-top: 40px;
+      & .accordion-class {
+        border-radius: 20px;
+        box-shadow: none; 
+      }
+
+      &__personality {
+      }
+
+      &__message {
+      }
+    }
+
+    & .accordion-spacer {
+      height: 20px;
+    }
+  }
+
+  &__application-list {
+    box-sizing: border-box;
+    padding: 1em;
+    background-color: white;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+}

@@ -1,0 +1,16 @@
+.mh-list-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__style {
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+    min-width: 12px;
+    border-radius: 100px;
+    border: 1px dashed var(--dark-blue);
+    margin-right: 12px;
+  }
+}
+

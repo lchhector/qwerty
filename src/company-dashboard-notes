@@ -1,0 +1,11 @@
+Critical:
+- homepage redirect to /login
+- cant add Link path to the screens, think cuz it is not wrapped with browser router
+-> bottom line: need to know how to build with react router
+
+- may learn testing next time
+
+Important features
+- burger menu for mobile responsiveness
+- custom scrollbar
+- expanded accordion not overflowing in own column, spilling over the man container

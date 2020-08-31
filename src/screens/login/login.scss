@@ -1,0 +1,142 @@
+:root {
+  --primary: #7fabe0;
+  --text: #878787;
+  --secondary: #E5EEF9;
+}
+
+.mh-login {
+  display: grid;
+  grid-template-areas: 
+  'sideImage loginForm';
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+
+  &__side-image {
+    grid-area: sideImage;
+    position: relative;
+    background-color: var(--secondary);
+
+    &__mh-logo {
+      position: absolute;
+      top: 0.5rem;
+      left: 1rem;
+      height: 70px;
+      width: 70px;
+      object-fit: contain;
+    }
+  }
+
+  &__content {
+    grid-area: loginForm;
+    padding-top: 8rem;
+    padding-bottom: 2rem;
+    width: 80%;
+    justify-self: center;
+
+    &__header {
+      font-size: 40px;
+      font-weight: bold;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    &__subHeader {
+      margin-top: 10px;
+      color: var(--text);
+    }
+
+    &__form {
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--text);
+
+      margin-top: 50px;
+
+      &__input-text {
+        height: 30px;
+        width: 100%;
+        max-width: 500px;
+        border: 1px solid;
+        border-color: #7fabe044;
+        border-radius: 5px;
+        font-family: 'Poppins', sans-serif;
+
+        padding-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 25px;
+
+        &:focus {
+          outline: none;
+          border: 1px solid var(--primary);
+        }
+      }
+
+      &__checkboxes {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr 1fr;
+        white-space: nowrap;
+        max-width: 510px;
+
+        &__forgetPassword {
+          color: var(--primary);
+          text-decoration: underline;
+          text-align: end;
+        }
+      }
+
+      &__button {
+        font-family: 'Poppins', sans-serif;
+        font-weight: bold;
+        color: white;
+        background-color: var(--primary);
+        padding: 0.7rem 0px;
+        width: 100%;
+        max-width: 510px;
+        border-radius: 5px;
+        border: none;
+
+        margin-top: 20px;
+        cursor: pointer;
+      }
+    }
+
+    &__footer {
+      font-size: 14px;
+      font-weight: normal;
+      color: var(--text);
+      white-space: nowrap;
+      margin-top: 40px;
+
+      & a {
+        text-decoration: underline;
+        color: var(--text);
+        font-weight: bold;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .mh-login {
+    grid-template-areas: 'sideImage loginForm';
+    grid-template-columns: 1fr 4fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .mh-login {
+    grid-template-areas: 'loginForm';
+    grid-template-columns: 1fr;
+  }
+  .mh-login__side-image {
+    display: none;
+  } 
+}
+
+
+
+
+
+

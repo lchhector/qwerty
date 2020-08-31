@@ -1,0 +1,55 @@
+.mh-application-item {
+  border: 1px solid #C4C4C4;
+  border-radius: 10px;
+  padding: 1em;
+  font-size: 14px;
+  margin-top: 20px;
+
+  & header {
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: underline;
+  }
+
+  &__applicant-info {
+    font-weight: normal;
+    color: var(--text);
+
+    margin-top: 10px;
+
+    & .name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+
+    & .line {
+      display: inline-block;
+      height: 3px;
+      width: 10px;
+      border-top: 1px solid #87878766;
+      margin-right: 6px;
+    }
+  }
+
+  &__traits {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &--inline-block {
+      display: inline-block;
+      width: 100%;
+      margin-right: 8px;
+
+      &--last {
+        margin-right: 0 !important;
+      }
+    }
+  }
+
+  &__percent-match {
+    margin-top: 5px;
+  }
+}

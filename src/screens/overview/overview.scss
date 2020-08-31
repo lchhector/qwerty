@@ -1,0 +1,154 @@
+// --main-bg-color, --dark-blue
+
+.mh-overview {
+  display: grid;
+  grid-template-areas:
+  'overview date'
+  'left right'
+  'applications applications'
+  'reminders reminders';
+  grid-template-columns: 1fr 1fr;
+  gap: 25px 15px;
+  padding: 3% 5%;
+
+  &__overview {
+    grid-area: overview;
+    font-weight: bold;
+  }
+
+  &__date {
+    grid-area: date;
+    color: #878787BB;
+    text-align: end;
+  }
+
+  &__pink-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6% 12%;
+
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 16px;
+    background-color: var(--pink);
+    border-radius: var(--border-radius);
+
+    &__content {
+      height: 100%;
+      width: 100%;
+    }
+    
+    &--left {
+      grid-area: left;
+
+      & header {
+        color: white;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      & strong {
+        color: white;
+        font-weight: bold;
+      }
+    }
+    
+    &--right {
+      grid-area: right;
+
+      & header {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        height: 24px;
+        margin-bottom: 10px;
+
+        & span {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          color: white;
+          font-size: 14px;
+          cursor: pointer;
+          
+          & .arrow-forward-icon {
+            font-size: 18px;
+            margin-left: 2px;
+            margin-top: 1px;
+          }
+        }
+      }
+    }
+  }
+  
+  &__applications {
+    grid-area: applications;
+
+    &__header {
+      font-size: 18px;
+      font-weight: bold;
+      color: black;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      & .more-button {
+        font-size: 16px;
+        font-weight: normal;
+        color: var(--text);
+        
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+
+        & .arrow-forward-icon {
+          font-size: 20px;
+          margin-left: 2px;
+          margin-top: 1px;
+        }
+      }
+    }
+
+    &__container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0px 10px;
+      margin-top: 10px;
+    }
+  }
+  
+  &__reminders {
+    grid-area: reminders;
+
+    &__header {
+      font-size: 18px;
+      font-weight: bold;
+      color: black;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .mh-overview {
+    grid-template-areas:
+    'overview date'
+    'left left'
+    'right right'
+    'applications applications'
+    'reminders reminders';
+
+    &__pink-container {
+      padding: 3% 4%;
+    }
+
+    &__applications {
+      &__container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+    }
+  }
+}

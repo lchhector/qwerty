@@ -1,0 +1,36 @@
+.mh-percentage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  --bar-bg-color: #E5E5E5;
+  --bar-height: 18px;
+
+  &__bar {
+    display: flex;
+    width: 100%;
+    height: var(--bar-height);
+    background-color: var(--bar-bg-color);
+    border-radius: 100px;
+
+    margin-right: 10px;
+
+    &__fill {
+      display: inline-block;
+      height: inherit;
+      border-radius: inherit;
+      background-color: #89E893;
+
+      font-size: 12px;
+      text-align: center;
+      line-height: var(--bar-height);
+    }
+
+    &__label {
+      font-size: 13px;
+      color: var(--dark-blue);
+      width: 130px;
+      white-space: nowrap;
+    }
+  }
+}

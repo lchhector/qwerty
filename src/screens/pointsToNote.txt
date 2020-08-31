@@ -1,0 +1,8 @@
+Existing UI but api not integrated yet
+- login: email + password
+- signup: email + password
+
+- checkboxes: i am a candidate, i am a company, accept terms and conditions
+- checkboxes: remember me (stay logged in)
+
+React navigation to move between screens?
