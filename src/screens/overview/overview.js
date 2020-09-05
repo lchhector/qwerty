@@ -7,23 +7,95 @@ import PercentMatch from '../../components/percentMatch';
 import Reminder from '../../components/reminder';
 import './overview.scss';
 
-const applicationOne = {
-  id: '1',
-  name: 'Yeo Rae-Nyse',
-  applicationFor: 'Marketing Intern',
-  info: {
-    year: '4',
-    degree: 'Business Management',
-    other: '',
-    related: 'Marketing Accounts Executive, Unilever',
-    top3: ['Openess', 'Conscientiousness', 'Entrepreneurial'],
+const applicationsList = [
+  {
+    id: '1',
+    name: 'Yeo Rae-Nyse',
+    applicationFor: 'Marketing Intern',
+    info: {
+      year: '4',
+      degree: 'Business Management',
+      other: '',
+      related: 'Marketing Accounts Executive, Unilever',
+      top3: ['Openess', 'Conscientiousness', 'Entrepreneurial'],
+    },
+    matchingData: {
+      softSkills: '75',
+      hardSkills: '50',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet sapien leo. Phasellus eget enim nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse nulla erat, congue sed tempor a, finibus sed neque. Quisque ultrices faucibus.',
+    },
   },
-  matchingData: {
-    softSkills: '75',
-    hardSkills: '50',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet sapien leo. Phasellus eget enim nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse nulla erat, congue sed tempor a, finibus sed neque. Quisque ultrices faucibus.',
+  {
+    id: '2',
+    name: 'Jolies',
+    applicationFor: 'Marketing Intern abc 123 xyz cde',
+    info: {
+      year: '4',
+      degree: 'Communications and New Media',
+      other: '',
+      related: 'Marketing Accounts Executive, Unilever',
+      top3: ['Openess', 'Conscientiousness', 'Entrepreneurial'],
+    },
+    matchingData: {
+      softSkills: '75',
+      hardSkills: '50',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet sapien leo. Phasellus eget enim nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse nulla erat, congue sed tempor a, finibus sed neque. Quisque ultrices faucibus.',
+    },
   },
-};
+  {
+    id: '3',
+    name: 'Vivian',
+    applicationFor: 'Marketing Intern',
+    info: {
+      year: '4',
+      degree: 'Accountancy',
+      other: '',
+      related: 'Marketing Accounts Executive, Unilever',
+      top3: ['Openess', 'Conscientiousness', 'Entrepreneurial'],
+    },
+    matchingData: {
+      softSkills: '75',
+      hardSkills: '50',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet sapien leo. Phasellus eget enim nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse nulla erat, congue sed tempor a, finibus sed neque. Quisque ultrices faucibus.',
+    },
+  },
+  {
+    id: '4',
+    name: 'Guy',
+    applicationFor: 'Internship position',
+    info: {
+      year: '2',
+      degree: 'Computer Science',
+      other: '',
+      related: 'Software engineer, Visa',
+      top3: ['Openess', 'Conscientiousness', 'Entrepreneurial'],
+    },
+    matchingData: {
+      softSkills: '50',
+      hardSkills: '25',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet sapien leo. Phasellus eget enim nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse nulla erat, congue sed tempor a, finibus sed neque. Quisque ultrices faucibus.',
+    },
+  },
+];
+
+// const applicationOne = {
+//   id: '1',
+//   name: 'Yeo Rae-Nyse',
+//   applicationFor: 'Marketing Intern',
+//   info: {
+//     year: '4',
+//     degree: 'Business Management',
+//     other: '',
+//     related: 'Marketing Accounts Executive, Unilever',
+//     top3: ['Openess', 'Conscientiousness', 'Entrepreneurial'],
+//   },
+//   matchingData: {
+//     softSkills: '75',
+//     hardSkills: '50',
+// eslint-disable-next-line max-len
+//     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet sapien leo. Phasellus eget enim nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse nulla erat, congue sed tempor a, finibus sed neque. Quisque ultrices faucibus.',
+//   },
+// };
 
 const applicationTwo = {
   id: '2',
@@ -73,6 +145,28 @@ const Reminders = [{
   application: applicationThree,
 }];
 
+const renderLatestApplications = () => {
+  const latestTwoApplications = [];
+  for (let i = 0; i < 2; i += 1) {
+    latestTwoApplications.push(applicationsList[i]);
+  }
+  return (
+    latestTwoApplications.map((application, index) => (
+      <section
+        className={(index === 1) ? 'mh-overview__applications__container mh-overview__applications__container--last'
+          : 'mh-overview__applications__container'}
+      >
+        <div>
+          <LatestApplication application={application} />
+        </div>
+        <div>
+          <PercentMatch matchingData={application.matchingData} />
+        </div>
+      </section>
+    ))
+  );
+};
+
 const Overview = () => (
   <div className="mh-overview">
     <div className="mh-overview__overview">Overview</div>
@@ -95,6 +189,7 @@ const Overview = () => (
       </div>
     </div>
 
+    {/* need to use a mapping function here */}
     <div className="mh-overview__applications">
       <Card>
         <div className="mh-overview__applications__header">
@@ -103,23 +198,7 @@ const Overview = () => (
             More <ArrowForwardIcon className="arrow-forward-icon" />
           </span>
         </div>
-        <section className="mh-overview__applications__container">
-          <div>
-            <LatestApplication application={applicationOne} />
-          </div>
-          <div>
-            <PercentMatch matchingData={applicationOne.matchingData} />
-          </div>
-        </section>
-
-        <section className="mh-overview__applications__container">
-          <div>
-            <LatestApplication application={applicationTwo} />
-          </div>
-          <div>
-            <PercentMatch matchingData={applicationTwo.matchingData} />
-          </div>
-        </section>
+        {renderLatestApplications()}
       </Card>
     </div>
 

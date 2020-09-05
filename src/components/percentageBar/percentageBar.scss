@@ -3,7 +3,7 @@
   flex-direction: row;
   align-items: center;
 
-  --bar-bg-color: #E5E5E5;
+  --bar-bg-color: #f2f2f2;
   --bar-height: 18px;
 
   &__bar {
@@ -15,6 +15,10 @@
 
     margin-right: 10px;
 
+    &--active {
+      background-color: #4A607B;
+    }
+
     &__fill {
       display: inline-block;
       height: inherit;
@@ -22,13 +26,21 @@
       background-color: #89E893;
 
       font-size: 12px;
+      color: #64AE6C !important;
       text-align: center;
       line-height: var(--bar-height);
+      white-space: nowrap;
+    }
+
+    &__text-outside-bar {
+      font-size: 12px;
+      color: #64AE6C !important;
+      line-height: var(--bar-height);
+      margin-left: 2px;
     }
 
     &__label {
       font-size: 13px;
-      color: var(--dark-blue);
       width: 130px;
       white-space: nowrap;
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Applications = ({ children, value, onChange }) => (
+const JobPostings = ({ children, value, onChange }) => (
   <div>
     {React.Children.map(children, (child) => (
       React.cloneElement(child, {
@@ -12,14 +12,14 @@ const Applications = ({ children, value, onChange }) => (
   </div>
 );
 
-Applications.propTypes = {
+JobPostings.propTypes = {
   children: PropTypes.node,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
-Applications.defaultProps = {
+JobPostings.defaultProps = {
   children: null,
 };
 
-export default Applications;
+export default JobPostings;

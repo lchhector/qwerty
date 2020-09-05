@@ -47,9 +47,9 @@ const AppDashboard = () => (
 
       <section className="mh-company-dashboard__body">
         <Switch>
-          {/* <Route exact path="/" component={Candidates} /> */}
+          <Route exact path="/" component={Postings} />
           <Route exact path="/">
-            <Redirect to="/candidates" />
+            <Redirect to="/postings" />
           </Route>
           <Route path="/overview" component={Overview} />
           <Route path="/postings" component={Postings} />

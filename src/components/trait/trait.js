@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './trait.scss';
 
 const traits = {
-  Openess: '#E5EEF9',
+  Openness: '#E5EEF9',
   Conscientiousness: '#BFD5EF',
   Extraversion: '#A5C4E9',
   Flexibility: '#7FDAE0',

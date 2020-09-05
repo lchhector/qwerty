@@ -1,155 +1,421 @@
-import React from 'react';
-import Accordion from '@material-ui/core/Accordion';
+import React, { useState } from 'react';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import speechBubble from '../../assets/speech_bubble.svg';
 import parallelCross from '../../assets/parallel_cross.svg';
 import Applications from '../../components/applications';
+import MhAccordion from '../../components/mhAccordion';
+import fileDocumentIcon from '../../assets/file_document_icon.svg';
 import './candidates.scss';
+import Trait from '../../components/trait';
 
-const applicationOne = {
-  id: '1',
-  name: 'Yeo Rae-Nyse',
-  applicationFor: 'Marketing Intern',
-  info: {
-    year: '4',
-    degree: 'Business Management',
-    other: '',
-    related: 'Marketing Accounts Executive, Unilever',
-    top3: ['Openess', 'Conscientiousness', 'Entrepreneurial'],
+const applicationsList = [
+  {
+    id: '1',
+    name: 'Yeo Rae-Nyse',
+    applicationFor: 'Marketing Intern',
+    info: {
+      year: '4',
+      degree: 'Business Management',
+      other: '',
+      related: 'Marketing Accounts Executive, Unilever',
+      top3: ['Openness', 'Conscientiousness', 'Entrepreneurial'],
+      top3Description: [
+        {
+          trait: 'Openness',
+          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+        },
+        {
+          trait: 'Conscientiousness',
+          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+        },
+        {
+          trait: 'Entrepreneurial',
+          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+        },
+      ],
+    },
+    experiences: [
+      {
+        title: 'Marketing Accounts Executive',
+        company: 'Unilever',
+        startDate: 'Jan 2020',
+        endDate: 'Jul 2020',
+        description: 'gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est',
+      },
+      {
+        title: 'Marketing Accounts Executive',
+        company: 'Unilever',
+        startDate: 'Jan 2020',
+        endDate: 'Jul 2020',
+        description: 'Some lorem ipsum gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est',
+      },
+      {
+        title: 'Marketing Accounts Executive',
+        company: 'Unilever',
+        startDate: 'Jan 2020',
+        endDate: 'Jul 2020',
+        description: 'Some lorem ipsum gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est',
+      },
+    ],
+    matchingData: {
+      softSkills: '75',
+      hardSkills: '50',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet sapien leo. Phasellus eget enim nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse nulla erat, congue sed tempor a, finibus sed neque. Quisque ultrices faucibus.',
+    },
   },
-  matchingData: {
-    softSkills: '75',
-    hardSkills: '50',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet sapien leo. Phasellus eget enim nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse nulla erat, congue sed tempor a, finibus sed neque. Quisque ultrices faucibus.',
+  {
+    id: '2',
+    name: 'Jolies',
+    applicationFor: 'Marketing Intern abc 123 xyz cde',
+    info: {
+      year: '4',
+      degree: 'Communications and New Media',
+      other: '',
+      related: 'Marketing Accounts Executive, Unilever',
+      top3: ['Openness', 'Conscientiousness', 'Entrepreneurial'],
+      top3Description: [
+        {
+          trait: 'Openness',
+          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+        },
+        {
+          trait: 'Conscientiousness',
+          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+        },
+        {
+          trait: 'Entrepreneurial',
+          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+        },
+      ],
+    },
+    experiences: [
+      {
+        title: 'Content Marketing',
+        company: 'Unilever',
+        startDate: 'Jan 2020',
+        endDate: 'Jul 2020',
+        description: 'gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est',
+      },
+      {
+        title: 'Content Marketing',
+        company: 'Unilever',
+        startDate: 'Jan 2020',
+        endDate: 'Jul 2020',
+        description: 'Some lorem ipsum gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est',
+      },
+      {
+        title: 'Content Marketing',
+        company: 'Unilever',
+        startDate: 'Jan 2020',
+        endDate: 'Jul 2020',
+        description: 'Some lorem ipsum gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est',
+      },
+    ],
+    matchingData: {
+      softSkills: '75',
+      hardSkills: '50',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet sapien leo. Phasellus eget enim nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse nulla erat, congue sed tempor a, finibus sed neque. Quisque ultrices faucibus.',
+    },
   },
-};
+  {
+    id: '3',
+    name: 'Vivian',
+    applicationFor: 'Marketing Intern',
+    info: {
+      year: '4',
+      degree: 'Accountancy',
+      other: '',
+      related: 'Marketing Accounts Executive, Unilever',
+      top3: ['Openness', 'Conscientiousness', 'Entrepreneurial'],
+      top3Description: [
+        {
+          trait: 'Openness',
+          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+        },
+        {
+          trait: 'Conscientiousness',
+          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+        },
+        {
+          trait: 'Entrepreneurial',
+          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+        },
+      ],
+    },
+    experiences: [
+      {
+        title: 'Corporate Business Development',
+        company: 'PWC',
+        startDate: 'Jan 2020',
+        endDate: 'Jul 2020',
+        description: 'gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est',
+      },
+      {
+        title: 'Corporate Business Development',
+        company: 'PWC',
+        startDate: 'Jan 2020',
+        endDate: 'Jul 2020',
+        description: 'Some lorem ipsum gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est',
+      },
+      {
+        title: 'Corporate Business Development',
+        company: 'PWC',
+        startDate: 'Jan 2020',
+        endDate: 'Jul 2020',
+        description: 'Some lorem ipsum gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est',
+      },
+    ],
+    matchingData: {
+      softSkills: '50',
+      hardSkills: '40',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet sapien leo. Phasellus eget enim nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse nulla erat, congue sed tempor a, finibus sed neque. Quisque ultrices faucibus.',
+    },
+  },
+  {
+    id: '4',
+    name: 'Guy 1',
+    applicationFor: 'Internship position',
+    info: {
+      year: '2',
+      degree: 'Computer Science',
+      other: '',
+      related: 'Software engineer, Visa',
+      top3: ['Openness', 'Conscientiousness', 'Entrepreneurial'],
+      top3Description: [
+        {
+          trait: 'Openness',
+          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+        },
+        {
+          trait: 'Conscientiousness',
+          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+        },
+        {
+          trait: 'Entrepreneurial',
+          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+        },
+      ],
+    },
+    experiences: [
+      {
+        title: 'Biz Dev Trainee/Intern',
+        company: 'LinkedIn',
+        startDate: 'Jan 2020',
+        endDate: 'Jul 2020',
+        description: 'gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est',
+      },
+      {
+        title: 'Biz Dev Trainee/Intern',
+        company: 'LinkedIn',
+        startDate: 'Jan 2020',
+        endDate: 'Jul 2020',
+        description: 'Some lorem ipsum gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est',
+      },
+      {
+        title: 'Biz Dev Trainee/Intern',
+        company: 'LinkedIn',
+        startDate: 'Jan 2020',
+        endDate: 'Jul 2020',
+        description: 'Some lorem ipsum gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est',
+      },
+    ],
+    matchingData: {
+      softSkills: '35',
+      hardSkills: '30',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet sapien leo. Phasellus eget enim nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse nulla erat, congue sed tempor a, finibus sed neque. Quisque ultrices faucibus.',
+    },
+  },
+  {
+    id: '5',
+    name: 'Guy 2',
+    applicationFor: 'Internship position',
+    info: {
+      year: '2',
+      degree: 'Computer Science',
+      other: '',
+      related: 'Software engineer, Visa',
+      top3: ['Openness', 'Conscientiousness', 'Entrepreneurial'],
+      top3Description: [
+        {
+          trait: 'Openness',
+          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+        },
+        {
+          trait: 'Conscientiousness',
+          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+        },
+        {
+          trait: 'Entrepreneurial',
+          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+        },
+      ],
+    },
+    experiences: [
+      {
+        title: 'Biz Dev Trainee/Intern',
+        company: 'Visa',
+        startDate: 'Jan 2020',
+        endDate: 'Jul 2020',
+        description: 'gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est',
+      },
+      {
+        title: 'Biz Dev Trainee/Intern',
+        company: 'Visa',
+        startDate: 'Jan 2020',
+        endDate: 'Jul 2020',
+        description: 'Some lorem ipsum gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est',
+      },
+      {
+        title: 'Biz Dev Trainee/Intern',
+        company: 'Visa',
+        startDate: 'Jan 2020',
+        endDate: 'Jul 2020',
+        description: 'Some lorem ipsum gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est',
+      },
+    ],
+    matchingData: {
+      softSkills: '25',
+      hardSkills: '20',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet sapien leo. Phasellus eget enim nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse nulla erat, congue sed tempor a, finibus sed neque. Quisque ultrices faucibus.',
+    },
+  },
+];
 
-const applicationTwo = {
-  id: '2',
-  name: 'Jolies',
-  applicationFor: 'Marketing Intern abc 123 xyz cde',
-  info: {
-    year: '4',
-    degree: 'Communications and New Media',
-    other: '',
-    related: 'Marketing Accounts Executive, Unilever',
-    top3: ['Openess', 'Conscientiousness', 'Entrepreneurial'],
-  },
-  matchingData: {
-    softSkills: '75',
-    hardSkills: '50',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet sapien leo. Phasellus eget enim nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse nulla erat, congue sed tempor a, finibus sed neque. Quisque ultrices faucibus.',
-  },
-};
+// cuz it's tightly coupled, better for the component to be composed together
+const renderExperiences = (experiences) => (
+  experiences.map((exp) => (
+    <div className="mh-candidates__application__experiences">
+      <div className="mh-candidates__application__experiences__header">{exp.title}, {exp.company}</div>
+      <div className="mh-candidates__application__experiences__start-end">{exp.startDate} - {exp.endDate}</div>
+      <div className="mh-candidates__application__experiences__description">{exp.description}</div>
+    </div>
+  ))
+);
 
-const applicationThree = {
-  id: '3',
-  name: 'Vivian',
-  applicationFor: 'Marketing Intern',
-  info: {
-    year: '4',
-    degree: 'Accountancy',
-    other: '',
-    related: 'Marketing Accounts Executive, Unilever',
-    top3: ['Openess', 'Conscientiousness', 'Entrepreneurial'],
-  },
-  matchingData: {
-    softSkills: '75',
-    hardSkills: '50',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet sapien leo. Phasellus eget enim nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse nulla erat, congue sed tempor a, finibus sed neque. Quisque ultrices faucibus.',
-  },
-};
-
-const Candidates = () => (
-  <div className="mh-candidates">
-    <section className="mh-candidates__application">
-      <header>Application for Marketing Intern</header>
-      <div className="mh-candidates__application__candidate-info">
-        <div className="mh-candidates__application__candidate-info__details">
-          <header>Candidate</header>
-          <div>
-            <header>Yeo Rae Nyse</header>
-            <div>Year 4, Biz mag</div>
-          </div>
-
-        </div>
-        <div className="mh-candidates__application__candidate-info__buttons">
-          <button type="button" className="btn-interview-candidate">
-            <img src={speechBubble} alt="." />
-            Interview Candidate
-          </button>
-          <button type="button" className="btn-reject-and-review">
-            <img src={parallelCross} alt="." />
-            Reject and Review
-          </button>
-        </div>
+const renderPersonalityTraits = (traits) => (
+  traits.map((trait) => (
+    <div className="mh-candidates__application__personality">
+      <div className="mh-candidates__application__personality--traits">
+        <Trait trait={trait.trait} />
       </div>
+      <div className="mh-candidates__application__personality--description">
+        {trait.description}
+      </div>
+    </div>
+  ))
+);
 
-      <section className="mh-candidates__application__accordions">
-        <div className="mh-candidates__application__accordions__experiences">
-          <Accordion className="accordion-class">
+const Candidates = () => {
+  const [currentApplication, setCurrentApplication] = useState('1');
+
+  const onChange = (value) => {
+    setCurrentApplication(value);
+  };
+
+  const selectedApplication = applicationsList.find((element) => element.id === currentApplication);
+  const { applicationFor, name, info } = selectedApplication;
+  const { year, degree } = info;
+
+  return (
+    <div className="mh-candidates">
+      <section className="mh-candidates__application">
+        <header>Application for {applicationFor}</header>
+        <div className="mh-candidates__application__candidate-info">
+          <div className="mh-candidates__application__candidate-info__details">
+            <header>Candidate</header>
+            <div>
+              <header>{name}</header>
+              <div>Year {year}, {degree}</div>
+            </div>
+
+          </div>
+          <div className="mh-candidates__application__candidate-info__buttons">
+            <button type="button" className="btn-interview-candidate">
+              <img src={speechBubble} alt="." />
+              Interview Candidate
+            </button>
+            <button type="button" className="btn-reject-and-review">
+              <img src={parallelCross} alt="." />
+              Reject and Review
+            </button>
+          </div>
+        </div>
+
+        <section className="mh-candidates__application__accordions">
+          <MhAccordion>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon style={{ color: 'black', fontSize: '30px' }} />}
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              Experiences
+              <div className="accordion-title">Experiences</div>
             </AccordionSummary>
-            <AccordionDetails>
-              Experiences
+            <AccordionDetails style={{ flexDirection: 'column' }}>
+              {renderExperiences(selectedApplication.experiences)}
+              <button type="button" className="mh-candidates__application__accordions__buttons">
+                <img src={fileDocumentIcon} alt="img" className="button-icon" />Download CV &nbsp;
+              </button>
             </AccordionDetails>
-          </Accordion>
-        </div>
+          </MhAccordion>
 
-        <div className="accordion-spacer" />
+          <div className="accordion-spacer" />
 
-        <div className="mh-candidates__application__accordions__personality">
-          <Accordion className="accordion-class" defaultExpanded>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon style={{ color: 'black', fontSize: '30px' }} />}
-            >
-              Personality
-            </AccordionSummary>
-            <AccordionDetails>
-              {/* eslint-disable-next-line max-len */}
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in dolor suscipit, iaculis quam et, ullamcorper erat. Pellentesque et nulla non tellus tempus efficitur nec vel eros. Quisque id placerat mauris. In fringilla condimentum sapien. In purus est, aliquam a hendrerit non, porta nec quam. Suspendisse eget ipsum interdum, aliquam metus vitae, finibus justo. Pellentesque eget ornare eros. Nulla mauris nisl, porta non cursus ac, condimentum id nulla. Morbi eleifend, sem at convallis venenatis, metus sapien vestibulum lectus, id consectetur ligula velit in arcu. In vehicula condimentum odio id maximus. Aenean ornare metus metus, id fringilla sem blandit rutrum. Praesent a dui cursus, ornare purus sit amet, sagittis dui. Quisque non tortor venenatis turpis tincidunt sollicitudin sed in ligula. Nullam a malesuada quam, vitae mattis orci. Ut ullamcorper bibendum gravida.
-              {/* eslint-disable-next-line max-len */}
-              Aliquam malesuada magna in justo congue, in rhoncus felis vestibulum. Curabitur enim arcu, blandit eu ex non, sodales convallis nisi. Nunc pretium ligula iaculis mattis ullamcorper. Nulla eu molestie tellus, at pharetra velit. Curabitur eu consectetur orci, sit amet vestibulum massa. Nullam vitae felis nisl. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin dictum ligula ut velit varius lacinia.
-              {/* eslint-disable-next-line max-len */}
-              Nullam nec sapien elit. Duis eget libero tempor justo feugiat eleifend eget nec sem. Phasellus sit amet porta nibh. Cras commodo commodo auctor. Morbi suscipit, nisl eget ultricies vestibulum, mauris magna vehicula tortor, at fermentum neque sem ac tellus. Sed ac nibh finibus lorem viverra porttitor at nec diam. Duis gravida tincidunt metus. Cras sagittis massa vitae sem gravida, a volutpat neque placerat. Suspendisse hendrerit ullamcorper tellus et euismod. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-            </AccordionDetails>
-          </Accordion>
-        </div>
+          <div>
+            <MhAccordion className="accordion-class" defaultExpanded>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon style={{ color: 'black', fontSize: '30px' }} />}
+              >
+                <div className="accordion-title">Personality</div>
+              </AccordionSummary>
+              <MhAccordion.Personality selectedApplication={selectedApplication} />
+              {/* <AccordionDetails style={{ flexDirection: 'column' }}>
+                <div className="mh-candidates__application__accordions__personality">
+                  <section>
+                    <div>Diagram analysis</div>
+                    <div>Color legend</div>
+                  </section>
+                  <section>
+                    <div className="header">Top 3 Traits</div>
+                    {renderPersonalityTraits(selectedApplication.info.top3Description)}
+                  </section>
+                </div>
+                <button type="button" className="mh-candidates__application__accordions__buttons">
+                  <img src={fileDocumentIcon} alt="img" className="button-icon" />Download Full Report {' '};
+                </button>
+              </AccordionDetails> */}
+            </MhAccordion>
+          </div>
 
-        <div className="accordion-spacer" />
+          <div className="accordion-spacer" />
 
-        <div className="mh-candidates__application__accordions__message">
-          <Accordion className="accordion-class">
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon style={{ color: 'black', fontSize: '30px' }} />}
-            >
-              Message
-            </AccordionSummary>
-            <AccordionDetails>
-              Personalised Message
-            </AccordionDetails>
-          </Accordion>
-        </div>
+          <div>
+            <MhAccordion className="accordion-class">
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon style={{ color: 'black', fontSize: '30px' }} />}
+              >
+                <div className="accordion-title">Message</div>
+              </AccordionSummary>
+              <AccordionDetails>
+                Personalised Message
+              </AccordionDetails>
+            </MhAccordion>
+          </div>
 
+        </section>
       </section>
-    </section>
 
-    <section className="mh-candidates__application-list">
-      <Applications>
-        <Applications.Item application={applicationOne} />
-        <Applications.Item application={applicationTwo} />
-        <Applications.Item application={applicationThree} />
-      </Applications>
-    </section>
+      <section className="mh-candidates__application-list">
+        <Applications onChange={onChange} value={currentApplication}>
+          {applicationsList.map((application) => (
+            <Applications.Item value={application.id} application={application} />
+          ))}
+        </Applications>
+      </section>
 
-  </div>
-);
+    </div>
+  );
+};
 
 export default Candidates;

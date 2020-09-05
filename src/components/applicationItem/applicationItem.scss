@@ -1,9 +1,25 @@
 .mh-application-item {
-  border: 1px solid #C4C4C4;
+  width: 100%;
+  border: 1px solid #5f5353;
   border-radius: 10px;
+  background-color: transparent;
+  outline: none;
+
   padding: 1em;
+  font-family: 'Poppins', sans-serif;
   font-size: 14px;
+  text-align: left;
   margin-top: 20px;
+  cursor: pointer;
+
+  &--active {
+    background-color: var(--dark-blue);
+    color: white;
+  }
+
+  & .selected--active {
+    color: white;
+  }
 
   & header {
     font-weight: bold;

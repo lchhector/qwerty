@@ -4,24 +4,37 @@ import Trait from '../trait';
 import PercentMatch from '../percentMatch';
 import './applicationItem.scss';
 
-const ApplicationItem = ({ application }) => {
+const ApplicationItem = ({
+  application,
+  value,
+  currentValue,
+  onPress,
+}) => {
+  let selected = false;
+  if (currentValue === value) {
+    selected = true;
+  } else selected = false;
   const {
     name,
     applicationFor,
     info,
   } = application;
   return (
-    <div className="mh-application-item">
+    <button
+      type="button"
+      className={(selected) ? 'mh-application-item mh-application-item--active' : 'mh-application-item'}
+      onClick={() => onPress(value)}
+    >
       {/* header will be changed to a link/button to another screen */}
       <header>Application for {applicationFor}</header>
       <div className="mh-application-item__applicant-info">
-        <span className="name">{name}</span>
+        <span className={(selected) ? 'name selected--active' : 'name'}>{name}</span>
         <span className="line" />
         <span>{info.year && (
           <span>Year {info.year},</span>
         )} {info.degree}
         </span>
-        <div>{info.related}</div>
+        <div className={(selected) ? 'selected--active' : {}}>{info.related}</div>
       </div>
       <div className="mh-application-item__traits">
         {info.top3.map((trait, index) => {
@@ -40,9 +53,9 @@ const ApplicationItem = ({ application }) => {
         })}
       </div>
       <div className="mh-application-item__percent-match">
-        <PercentMatch matchingData={application.matchingData} noDescription />
+        <PercentMatch matchingData={application.matchingData} noDescription selected={selected} />
       </div>
-    </div>
+    </button>
   );
 };
 
@@ -58,6 +71,9 @@ ApplicationItem.propTypes = {
     }),
     matchingData: PropTypes.shape({}),
   }).isRequired,
+  value: PropTypes.string.isRequired,
+  currentValue: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
 };
 
 export default ApplicationItem;
