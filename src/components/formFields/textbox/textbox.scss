@@ -1,0 +1,27 @@
+.mh-textbox {
+
+  &__label {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--text);
+  }
+
+  &__input {
+    height: 34px;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 100px;
+    border: 1px solid;
+    border-color: #7fabe044;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+  
+    margin-top: 10px;
+    margin-bottom: 25px;
+
+    &:focus {
+      outline: none;
+      border: 1px solid var(--primary);
+    }
+  }
+}

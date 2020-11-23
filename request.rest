@@ -1,0 +1,73 @@
+GET http://dgtocn1.ga/v1/students/
+Content-Type: application/json
+Authorization: Token d0087071fe340aa855f7447836323f59b1ccd96d
+
+###
+POST http://dgtocn1.ga/v1/students/sign-up/
+Content-Type: application/json
+
+{
+  "email": "hello12345@email.com",
+  "password": "superstrongpassword",
+  "first_name": "test",
+  "last_name": "signup",
+  "phone_number": "+6583006488",
+  "referred_channel": "I heard about MatcHub through the super-extra-long Facebook channel and Instagram"
+}
+
+###
+POST http://localhost:8000/v1/students/sign-up/
+Content-Type: application/json
+
+{
+  "email": "lowchhector12@gmail.com",
+  "password": "superstrongpassword",
+  "first_name": "",
+  "last_name": "",
+  "phone_number": "",
+  "referred_channel": ""
+}
+
+###
+POST http://localhost:8000/auth/api-token/
+HEAD Authorization: Token ea7f7e846854e32579416362c11a78f85595d9bc
+Content-Type: application/json
+
+{
+
+}
+###
+POST http://localhost:8000/auth/api-token/
+Content-Type: application/json
+
+{
+  "username": "testAccount@email.com",
+  "password": "superstrongpassword"
+}
+
+### 
+GET http://localhost:8000/v1/nationalities/
+
+###
+POST  http://localhost:8000/auth/api-token/
+Content-Type: application/json
+
+{
+  "username": "matchub",
+  "password": "Matchub321"
+}
+
+###
+GET http://localhost:8000/auth/user/
+Content-Type: application/json
+
+{
+  "detail": "detail",
+  "name": "hello",
+  "password": "password"
+}
+
+# v1
+# admin
+# auth/api-token
+# auth/user

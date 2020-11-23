@@ -1,0 +1,69 @@
+.mh-steps-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+
+  &__small-circle {
+    display: inline-block;  
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: normal;
+    border-radius: 50px;
+    border: 1px solid var(--text);
+    height: 20px;
+    width: 20px;
+    min-width: 20px;
+    color: var(--text);
+  }
+
+  &__normal-words {
+    font-size: 14px;
+    font-weight: normal;
+    color: var(--text);
+    margin-left: 10px;
+    white-space: nowrap;
+  }
+
+  &__big-circle {
+    display: inline-block;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
+    min-width: 50px;
+    background-color: var(--primary);
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+  }
+
+  &__big-bold-words {
+    margin-left: 10px;
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--primary);
+    white-space: nowrap;
+  }
+
+  &__line {
+    display: inline-block;
+    height: 8px;
+    width: 25px;
+    min-width: 10px;
+    border-top: 1px solid #87878762;
+    margin-left: 10px;
+  }
+
+  &--margin-bottom {
+    white-space: nowrap;
+    margin-bottom: 10px;
+  }
+
+  &--margin-left {
+    margin-left: 10px;
+  }
+}

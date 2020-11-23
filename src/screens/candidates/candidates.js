@@ -8,34 +8,31 @@ import Applications from '../../components/applications';
 import MhAccordion from '../../components/mhAccordion';
 import fileDocumentIcon from '../../assets/file_document_icon.svg';
 import './candidates.scss';
-import Trait from '../../components/trait';
 
 const applicationsList = [
   {
     id: '1',
     name: 'Yeo Rae-Nyse',
     applicationFor: 'Marketing Intern',
-    info: {
-      year: '4',
-      degree: 'Business Management',
-      other: '',
-      related: 'Marketing Accounts Executive, Unilever',
-      top3: ['Openness', 'Conscientiousness', 'Entrepreneurial'],
-      top3Description: [
-        {
-          trait: 'Openness',
-          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
-        },
-        {
-          trait: 'Conscientiousness',
-          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
-        },
-        {
-          trait: 'Entrepreneurial',
-          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
-        },
-      ],
-    },
+    year: '4',
+    degree: 'Business Management',
+    other: '',
+    related: 'Marketing Accounts Executive, Unilever',
+    top3: ['Openness', 'Conscientiousness', 'Entrepreneurial'],
+    top3Traits: [
+      {
+        trait: 'Openness',
+        description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+      },
+      {
+        trait: 'Conscientiousness',
+        description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+      },
+      {
+        trait: 'Entrepreneurial',
+        description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+      },
+    ],
     experiences: [
       {
         title: 'Marketing Accounts Executive',
@@ -69,27 +66,26 @@ const applicationsList = [
     id: '2',
     name: 'Jolies',
     applicationFor: 'Marketing Intern abc 123 xyz cde',
-    info: {
-      year: '4',
-      degree: 'Communications and New Media',
-      other: '',
-      related: 'Marketing Accounts Executive, Unilever',
-      top3: ['Openness', 'Conscientiousness', 'Entrepreneurial'],
-      top3Description: [
-        {
-          trait: 'Openness',
-          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
-        },
-        {
-          trait: 'Conscientiousness',
-          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
-        },
-        {
-          trait: 'Entrepreneurial',
-          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
-        },
-      ],
-    },
+
+    year: '4',
+    degree: 'Communications and New Media',
+    other: '',
+    related: 'Marketing Accounts Executive, Unilever',
+    top3: ['Openness', 'Conscientiousness', 'Entrepreneurial'],
+    top3Traits: [
+      {
+        trait: 'Openness',
+        description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+      },
+      {
+        trait: 'Conscientiousness',
+        description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+      },
+      {
+        trait: 'Entrepreneurial',
+        description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+      },
+    ],
     experiences: [
       {
         title: 'Content Marketing',
@@ -123,27 +119,26 @@ const applicationsList = [
     id: '3',
     name: 'Vivian',
     applicationFor: 'Marketing Intern',
-    info: {
-      year: '4',
-      degree: 'Accountancy',
-      other: '',
-      related: 'Marketing Accounts Executive, Unilever',
-      top3: ['Openness', 'Conscientiousness', 'Entrepreneurial'],
-      top3Description: [
-        {
-          trait: 'Openness',
-          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
-        },
-        {
-          trait: 'Conscientiousness',
-          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
-        },
-        {
-          trait: 'Entrepreneurial',
-          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
-        },
-      ],
-    },
+
+    year: '4',
+    degree: 'Accountancy',
+    other: '',
+    related: 'Marketing Accounts Executive, Unilever',
+    top3: ['Openness', 'Conscientiousness', 'Entrepreneurial'],
+    top3Traits: [
+      {
+        trait: 'Openness',
+        description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+      },
+      {
+        trait: 'Conscientiousness',
+        description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+      },
+      {
+        trait: 'Entrepreneurial',
+        description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+      },
+    ],
     experiences: [
       {
         title: 'Corporate Business Development',
@@ -177,27 +172,26 @@ const applicationsList = [
     id: '4',
     name: 'Guy 1',
     applicationFor: 'Internship position',
-    info: {
-      year: '2',
-      degree: 'Computer Science',
-      other: '',
-      related: 'Software engineer, Visa',
-      top3: ['Openness', 'Conscientiousness', 'Entrepreneurial'],
-      top3Description: [
-        {
-          trait: 'Openness',
-          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
-        },
-        {
-          trait: 'Conscientiousness',
-          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
-        },
-        {
-          trait: 'Entrepreneurial',
-          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
-        },
-      ],
-    },
+
+    year: '2',
+    degree: 'Computer Science',
+    other: '',
+    related: 'Software engineer, Visa',
+    top3: ['Openness', 'Conscientiousness', 'Entrepreneurial'],
+    top3Traits: [
+      {
+        trait: 'Openness',
+        description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+      },
+      {
+        trait: 'Conscientiousness',
+        description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+      },
+      {
+        trait: 'Entrepreneurial',
+        description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+      },
+    ],
     experiences: [
       {
         title: 'Biz Dev Trainee/Intern',
@@ -231,27 +225,26 @@ const applicationsList = [
     id: '5',
     name: 'Guy 2',
     applicationFor: 'Internship position',
-    info: {
-      year: '2',
-      degree: 'Computer Science',
-      other: '',
-      related: 'Software engineer, Visa',
-      top3: ['Openness', 'Conscientiousness', 'Entrepreneurial'],
-      top3Description: [
-        {
-          trait: 'Openness',
-          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
-        },
-        {
-          trait: 'Conscientiousness',
-          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
-        },
-        {
-          trait: 'Entrepreneurial',
-          description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
-        },
-      ],
-    },
+
+    year: '2',
+    degree: 'Computer Science',
+    other: '',
+    related: 'Software engineer, Visa',
+    top3: ['Openness', 'Conscientiousness', 'Entrepreneurial'],
+    top3Traits: [
+      {
+        trait: 'Openness',
+        description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+      },
+      {
+        trait: 'Conscientiousness',
+        description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+      },
+      {
+        trait: 'Entrepreneurial',
+        description: 'bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in',
+      },
+    ],
     experiences: [
       {
         title: 'Biz Dev Trainee/Intern',
@@ -294,19 +287,6 @@ const renderExperiences = (experiences) => (
   ))
 );
 
-const renderPersonalityTraits = (traits) => (
-  traits.map((trait) => (
-    <div className="mh-candidates__application__personality">
-      <div className="mh-candidates__application__personality--traits">
-        <Trait trait={trait.trait} />
-      </div>
-      <div className="mh-candidates__application__personality--description">
-        {trait.description}
-      </div>
-    </div>
-  ))
-);
-
 const Candidates = () => {
   const [currentApplication, setCurrentApplication] = useState('1');
 
@@ -315,8 +295,10 @@ const Candidates = () => {
   };
 
   const selectedApplication = applicationsList.find((element) => element.id === currentApplication);
-  const { applicationFor, name, info } = selectedApplication;
-  const { year, degree } = info;
+  const {
+    applicationFor,
+    name, year, degree,
+  } = selectedApplication;
 
   return (
     <div className="mh-candidates">
@@ -369,22 +351,7 @@ const Candidates = () => {
               >
                 <div className="accordion-title">Personality</div>
               </AccordionSummary>
-              <MhAccordion.Personality selectedApplication={selectedApplication} />
-              {/* <AccordionDetails style={{ flexDirection: 'column' }}>
-                <div className="mh-candidates__application__accordions__personality">
-                  <section>
-                    <div>Diagram analysis</div>
-                    <div>Color legend</div>
-                  </section>
-                  <section>
-                    <div className="header">Top 3 Traits</div>
-                    {renderPersonalityTraits(selectedApplication.info.top3Description)}
-                  </section>
-                </div>
-                <button type="button" className="mh-candidates__application__accordions__buttons">
-                  <img src={fileDocumentIcon} alt="img" className="button-icon" />Download Full Report {' '};
-                </button>
-              </AccordionDetails> */}
+              <MhAccordion.Personality application={selectedApplication} />
             </MhAccordion>
           </div>
 

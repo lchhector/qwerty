@@ -18,7 +18,7 @@ const renderPersonalityTraits = (traits) => (
   ))
 );
 
-const Personality = ({ selectedApplication }) => (
+const Personality = ({ application }) => (
   <AccordionDetails style={{ flexDirection: 'column' }}>
     <div className="mh-accordion-personality">
       <section>
@@ -27,7 +27,7 @@ const Personality = ({ selectedApplication }) => (
       </section>
       <section>
         <div className="header">Top 3 Traits</div>
-        {renderPersonalityTraits(selectedApplication.info.top3Description)}
+        {renderPersonalityTraits(application.top3Traits)}
       </section>
     </div>
     <button type="button" className="mh-accordion-personality__buttons">
@@ -37,9 +37,10 @@ const Personality = ({ selectedApplication }) => (
 );
 
 Personality.propTypes = {
-  selectedApplication: PropTypes.shape({
-    info: PropTypes.shape({
-      top3Description: PropTypes.arrayOf({}),
+  application: PropTypes.shape({
+    top3Traits: PropTypes.arrayOf({
+      trait: PropTypes.string,
+      description: PropTypes.string,
     }),
   }).isRequired,
 };

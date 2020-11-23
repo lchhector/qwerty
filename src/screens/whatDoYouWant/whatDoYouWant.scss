@@ -1,0 +1,27 @@
+.mh-whatdoyouwant-modal-header {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 30px;
+}
+
+.mh-whatdoyouwant-modal-body {
+  margin-bottom: 50px;
+}
+
+.mh-whatdoyouwant-modal-button {
+  width: 50%;
+  margin: auto;
+  font-weight: normal !important;
+}
+
+.mh-whatdoyouwant-resume-audit {
+  max-width: 500px;
+  display: flex;
+  flex-direction: row;
+}
+
+.mh-whatdoyouwant-resume-audit--margin-left {
+  margin-left: 50px;
+}

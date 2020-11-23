@@ -49,7 +49,7 @@ LatestApplication.propTypes = {
     info: PropTypes.shape({
       year: PropTypes.string,
       degree: PropTypes.string,
-      top3: PropTypes.arrayOf({}),
+      top3: PropTypes.arrayOf(PropTypes.string),
       related: PropTypes.string,
     }),
     matchingData: PropTypes.shape({}),

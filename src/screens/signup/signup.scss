@@ -1,5 +1,6 @@
 :root {
   --primary: #7fabe0;
+  --dark-blue: #1F2F42;
   --text: #878787;
   --secondary: #E5EEF9;
 }
@@ -24,6 +25,14 @@
       width: 70px;
       object-fit: contain;
     }
+
+    &__big-picture-signup {
+      position: absolute;
+      bottom: 20%;
+      left: 7%;
+      max-width: 100%;
+      height: auto;
+    }
   }
 
   &__content {
@@ -33,102 +42,18 @@
     width: 80%;
     justify-self: center;
 
-    &__header {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      font-family: 'Poppins', sans-serif;
-
-      &__1st-step {
-        white-space: nowrap;
-      }
-
-      &__1 {
-        display: inline-block;
-        text-align: center;
-        line-height: 50px;
-        border-radius: 50px;
-        height: 50px;
-        width: 50px;
-        min-width: 50px;
-        background-color: var(--primary);
-        font-size: 40px;
-        font-weight: bold;
-        color: white;
-        white-space: nowrap;
-      }
-
-      &__1-text {
-        margin-left: 10px;
-        font-size: 40px;
-        font-weight: bold;
-        color: var(--primary);
-        white-space: nowrap;
-      }
-
-      &__line {
-        display: inline-block;
-        height: 8px;
-        width: 25px;
-        min-width: 10px;
-        border-top: 1px solid #87878762;
-        margin-left: 10px;
-      }
-
-      &__2nd-step {
-        display: block;
-        white-space: nowrap;
-        margin-bottom: 10px;
-      }
-
-      &__2 {
-        display: inline-block;  
-        text-align: center;
-        line-height: 20px;
-        font-size: 14px;
-        font-weight: normal;
-        border-radius: 50px;
-        border: 1px solid var(--text);
-        height: 20px;
-        width: 20px;
-        min-width: 20px;
-        color: var(--text);
-        margin-left: 10px;
-      }
-
-      &__2-text {
-        font-size: 14px;
-        font-weight: normal;
-        color: var(--text);
-        margin-left: 10px;
-        white-space: nowrap;
-      }
-    }
-
     &__form {
       font-size: 14px;
       font-weight: bold;
       color: var(--text);
 
-      margin-top: 20px;
+      margin-top: 30px;
 
-      &__input-text {
-        height: 30px;
-        width: 100%;
-        max-width: 500px;
-        border: 1px solid;
-        border-color: #7fabe044;
-        border-radius: 5px;
-        font-family: 'Poppins', sans-serif;
-
-        padding-left: 10px;
-        margin-top: 10px;
-        margin-bottom: 30px;
-
-        &:focus {
-          outline: none;
-          border: 1px solid var(--primary);
-        }
+      &__textboxes {
+        display: flex;
+        flex-direction: column;
+        max-width: 510px;
+        margin-bottom: 24px;
       }
 
       &__checkboxes {
@@ -147,18 +72,22 @@
       }
 
       &__button {
+        display: block;
+        text-decoration: none;
+        text-align: center;
         font-family: 'Poppins', sans-serif;
         font-weight: bold;
         color: white;
         background-color: var(--primary);
-        padding: 0.7rem 0px;
         width: 100%;
         max-width: 510px;
         border-radius: 5px;
         border: none;
-
-        margin-top: 40px;
         cursor: pointer;
+
+        &--company {
+          background-color: var(--dark-blue);
+        }
       }
     }
 

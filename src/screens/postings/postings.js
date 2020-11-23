@@ -18,15 +18,15 @@ const companyPostings = [
     pay: '3000',
     top3Traits: [
       {
-        trait: 'Resilience',
+        trait: 'Openness',
         description: 'Desired trait description...',
       },
       {
-        trait: 'Proactiveness',
+        trait: 'Conscientiousness',
         description: 'Desired trait description...',
       },
       {
-        trait: 'Entrepreneurial',
+        trait: 'Extraversion',
         description: 'Desired trait description...',
       },
     ],
@@ -45,15 +45,15 @@ const companyPostings = [
     pay: '3000',
     top3Traits: [
       {
+        trait: 'Flexibility',
+        description: 'Desired trait description...',
+      },
+      {
         trait: 'Resilience',
         description: 'Desired trait description...',
       },
       {
         trait: 'Proactiveness',
-        description: 'Desired trait description...',
-      },
-      {
-        trait: 'Entrepreneurial',
         description: 'Desired trait description...',
       },
     ],
@@ -72,11 +72,11 @@ const companyPostings = [
     pay: '3000',
     top3Traits: [
       {
-        trait: 'Resilience',
+        trait: 'Willingness',
         description: 'Desired trait description...',
       },
       {
-        trait: 'Proactiveness',
+        trait: 'Entrepreneurial',
         description: 'Desired trait description...',
       },
       {
@@ -94,20 +94,136 @@ const companyPostings = [
   },
 ];
 
+const renderNewForm = () => (
+  <form>
+    <div>Create new job posting, x button</div>
+    <div>
+      <div>
+        <label>Job title</label>
+        <input type="text" />
+      </div>
+      <div>
+        <label>Number of interns</label>
+        <input type="text" />
+      </div>
+    </div>
+    <div>
+      <label>Job Type</label>
+      <div>Checkbox options x4</div>
+    </div>
+    <div>
+      <div>
+        <label>Duration of internship</label>
+        <input type="text" />
+      </div>
+      <div>
+        <label>Working hours</label>
+        <input type="text" />
+      </div>
+    </div>
+
+    <div>Remuneration, deadline</div>
+    <div>Job overview</div>
+    <div>Job description</div>
+    <div>Hard skills</div>
+    <div>Search bar for hard skills</div>
+    <div>Rank traits</div>
+    <div>Disclaimer</div>
+    <div>Buttons: Save draft, publish listing</div>
+
+  </form>
+);
+
+const renderPostingDetails = (selectedPosting) => {
+  const {
+    companyInfo,
+    role,
+    employmentType,
+    pay,
+  } = selectedPosting;
+  return (
+    <>
+      <div className="mh-postings__posting-details__small-icons">
+        <img src={editIcon} alt="" className="--edit-icon" />
+        <img src={plusIcon} alt="" className="--plus-icon" />
+      </div>
+      <section className="mh-postings__posting-details__content">
+        <div className="mh-postings__posting-details__content__header">
+          <img src={companyInfo.companyLogo} alt="" className="company-logo" />
+          <div className="mh-postings__posting-details__content__header__text">
+            <div className="--bold">{role}</div>
+            <div>{companyInfo.companyName}</div>
+          </div>
+        </div>
+        <div className="mh-postings__posting-details__content__location-duration-applicants">
+          {companyInfo.location}, {companyInfo.country}
+          <span>Posted 1 week ago, 12</span>
+        </div>
+        <div>
+          {employmentType.map((type, index) => (
+            <span>{type}{index < employmentType.length - 1 ? ', ' : ''}</span>
+          ))} ${pay}/mth
+        </div>
+        <section className="mh-postings__posting-details__content__accordions">
+          <MhAccordion className="blue-border">
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon style={{ color: 'black', fontSize: '30px' }} />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <div className="accordion-title">Job Overview</div>
+            </AccordionSummary>
+            <AccordionDetails style={{ flexDirection: 'column' }}>
+              Placeholder
+            </AccordionDetails>
+          </MhAccordion>
+
+          <div className="accordion-spacer" />
+
+          <div>
+            <MhAccordion className="blue-border">
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon style={{ color: 'black', fontSize: '30px' }} />}
+              >
+                <div className="accordion-title">Skills</div>
+              </AccordionSummary>
+              <AccordionDetails>
+                Skillsets
+              </AccordionDetails>
+            </MhAccordion>
+          </div>
+
+          <div className="accordion-spacer" />
+
+          <div>
+            <MhAccordion className="blue-border" defaultExpanded>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon style={{ color: 'black', fontSize: '30px' }} />}
+              >
+                <div className="accordion-title">Personality</div>
+              </AccordionSummary>
+              <MhAccordion.Personality application={selectedPosting} company />
+            </MhAccordion>
+          </div>
+        </section>
+      </section>
+    </>
+  );
+};
+
 const Postings = () => {
   const [currentPosting, setCurrentPosting] = useState('1');
   const onChange = (value) => {
     setCurrentPosting(value);
   };
 
-  const selectedPosting = companyPostings.find((element) => element.id === currentPosting);
-  const {
-    companyInfo,
-    role,
-    employmentType,
-    pay,
-    top3Traits,
-  } = selectedPosting;
+  let createNewPosting = false;
+  let selectedPosting = null;
+  if (currentPosting === 'create-new') {
+    createNewPosting = true;
+  } else {
+    selectedPosting = companyPostings.find((element) => element.id === currentPosting);
+  }
   return (
     <div className="mh-postings">
       <section className="mh-postings__list">
@@ -129,6 +245,7 @@ const Postings = () => {
         <button
           type="button"
           className="mh-postings__create-new-button"
+          onClick={() => setCurrentPosting('create-new')}
         >
           <img src={plusIcon} alt="+" className="plus-icon" />
           <div>Create New Job Posting</div>
@@ -136,7 +253,10 @@ const Postings = () => {
       </section>
 
       <section className="mh-postings__posting-details">
-        <div className="mh-postings__posting-details__small-icons">
+        {
+          (createNewPosting) ? renderNewForm() : renderPostingDetails(selectedPosting)
+        }
+        {/* <div className="mh-postings__posting-details__small-icons">
           <img src={editIcon} alt="" className="--edit-icon" />
           <img src={plusIcon} alt="" className="--plus-icon" />
         </div>
@@ -167,7 +287,7 @@ const Postings = () => {
                 <div className="accordion-title">Job Overview</div>
               </AccordionSummary>
               <AccordionDetails style={{ flexDirection: 'column' }}>
-                {/* {renderExperiences(selectedApplication.experiences)} */}
+                Placeholder
               </AccordionDetails>
             </MhAccordion>
 
@@ -181,7 +301,7 @@ const Postings = () => {
                   <div className="accordion-title">Skills</div>
                 </AccordionSummary>
                 <AccordionDetails>
-                  Skillset
+                  Skillsets
                 </AccordionDetails>
               </MhAccordion>
             </div>
@@ -195,23 +315,12 @@ const Postings = () => {
                 >
                   <div className="accordion-title">Personality</div>
                 </AccordionSummary>
-                <AccordionDetails style={{ flexDirection: 'column' }}>
-                  <div className="mh-candidates__application__accordions__personality">
-                    <section>
-                      <div>Diagram analysis</div>
-                      <div>Color legend</div>
-                    </section>
-                    <section>
-                      <div className="header">Top 3 Traits</div>
-                      {/* {renderPersonalityTraits(selectedApplication.info.top3Description)} */}
-                    </section>
-                  </div>
-                </AccordionDetails>
+                <MhAccordion.Personality application={selectedPosting} company />
               </MhAccordion>
             </div>
 
           </section>
-        </section>
+        </section> */}
       </section>
     </div>
   );

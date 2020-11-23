@@ -15,9 +15,8 @@ const ApplicationItem = ({
     selected = true;
   } else selected = false;
   const {
-    name,
-    applicationFor,
-    info,
+    name, applicationFor,
+    year, degree, related, top3Traits,
   } = application;
   return (
     <button
@@ -30,27 +29,18 @@ const ApplicationItem = ({
       <div className="mh-application-item__applicant-info">
         <span className={(selected) ? 'name selected--active' : 'name'}>{name}</span>
         <span className="line" />
-        <span>{info.year && (
-          <span>Year {info.year},</span>
-        )} {info.degree}
+        <span>{year && (
+          <span>Year {year},</span>
+        )} {degree}
         </span>
-        <div className={(selected) ? 'selected--active' : {}}>{info.related}</div>
+        <div className={(selected) ? 'selected--active' : {}}>{related}</div>
       </div>
       <div className="mh-application-item__traits">
-        {info.top3.map((trait, index) => {
-          if (index === 2) {
-            return (
-              <span className="mh-application-item__traits--inline-block mh-application-item__traits--inline-block--last">
-                <Trait trait={trait} last />
-              </span>
-            );
-          }
-          return (
-            <span className="mh-application-item__traits--inline-block">
-              <Trait trait={trait} />
-            </span>
-          );
-        })}
+        {top3Traits.map((traitObject) => (
+          <span className="mh-application-item__traits--inline-block">
+            <Trait trait={traitObject.trait} />
+          </span>
+        ))}
       </div>
       <div className="mh-application-item__percent-match">
         <PercentMatch matchingData={application.matchingData} noDescription selected={selected} />
@@ -63,12 +53,13 @@ ApplicationItem.propTypes = {
   application: PropTypes.shape({
     name: PropTypes.string,
     applicationFor: PropTypes.string,
-    info: PropTypes.shape({
-      year: PropTypes.string,
-      degree: PropTypes.string,
-      top3: PropTypes.arrayOf({}),
-      related: PropTypes.string,
+    year: PropTypes.string,
+    degree: PropTypes.string,
+    top3Traits: PropTypes.arrayOf({
+      trait: PropTypes.string,
+      description: PropTypes.string,
     }),
+    related: PropTypes.string,
     matchingData: PropTypes.shape({}),
   }).isRequired,
   value: PropTypes.string.isRequired,

@@ -24,6 +24,14 @@
       width: 70px;
       object-fit: contain;
     }
+
+    &__big-picture-login {
+      position: absolute;
+      left: 10%;
+      bottom: 20%;
+      max-width: 100%;
+      height: auto;
+    }
   }
 
   &__content {
@@ -52,23 +60,8 @@
 
       margin-top: 50px;
 
-      &__input-text {
-        height: 30px;
-        width: 100%;
-        max-width: 500px;
-        border: 1px solid;
-        border-color: #7fabe044;
-        border-radius: 5px;
-        font-family: 'Poppins', sans-serif;
-
-        padding-left: 10px;
-        margin-top: 10px;
-        margin-bottom: 25px;
-
-        &:focus {
-          outline: none;
-          border: 1px solid var(--primary);
-        }
+      &__textboxes {
+        max-width: 510px;
       }
 
       &__checkboxes {
@@ -83,21 +76,6 @@
           text-decoration: underline;
           text-align: end;
         }
-      }
-
-      &__button {
-        font-family: 'Poppins', sans-serif;
-        font-weight: bold;
-        color: white;
-        background-color: var(--primary);
-        padding: 0.7rem 0px;
-        width: 100%;
-        max-width: 510px;
-        border-radius: 5px;
-        border: none;
-
-        margin-top: 20px;
-        cursor: pointer;
       }
     }
 

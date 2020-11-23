@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import ListItem from '../../components/listItem';
 import Card from '../../components/card';
@@ -167,52 +168,56 @@ const renderLatestApplications = () => {
   );
 };
 
-const Overview = () => (
-  <div className="mh-overview">
-    <div className="mh-overview__overview">Overview</div>
-    <div className="mh-overview__date">20 July 2020, Monday</div>
-    <div className="mh-overview__pink-container mh-overview__pink-container--left">
-      <div className="mh-overview__pink-container__content">
-        <header>Welcome back, Angelica.</header>
-        <div>You have <strong>3</strong> new applications for Marketing Intern.</div>
-      </div>
-    </div>
-    <div className="mh-overview__pink-container mh-overview__pink-container--right">
-      <div className="mh-overview__pink-container__content">
-        <header>
-          <span>
-            More <ArrowForwardIcon className="arrow-forward-icon" />
-          </span>
-        </header>
-        <ListItem>Goal: 3 Marketing Interns</ListItem>
-        <ListItem>Goal: 1 Finance Intern</ListItem>
-      </div>
-    </div>
-
-    {/* need to use a mapping function here */}
-    <div className="mh-overview__applications">
-      <Card>
-        <div className="mh-overview__applications__header">
-          Latest Applications
-          <span className="more-button">
-            More <ArrowForwardIcon className="arrow-forward-icon" />
-          </span>
+const Overview = () => {
+  const user = useSelector((state) => state.user);
+  const firstName = user.first_name;
+  return (
+    <div className="mh-overview">
+      <div className="mh-overview__overview">Overview</div>
+      <div className="mh-overview__date">20 July 2020, Monday</div>
+      <div className="mh-overview__pink-container mh-overview__pink-container--left">
+        <div className="mh-overview__pink-container__content">
+          <header>Welcome back, {firstName}</header>
+          <div>You have <strong>3</strong> new applications for Marketing Intern.</div>
         </div>
-        {renderLatestApplications()}
-      </Card>
-    </div>
+      </div>
+      <div className="mh-overview__pink-container mh-overview__pink-container--right">
+        <div className="mh-overview__pink-container__content">
+          <header>
+            <span>
+              More <ArrowForwardIcon className="arrow-forward-icon" />
+            </span>
+          </header>
+          <ListItem>Goal: 3 Marketing Interns</ListItem>
+          <ListItem>Goal: 1 Finance Intern</ListItem>
+        </div>
+      </div>
 
-    <div className="mh-overview__reminders">
-      <Card>
-        <div className="mh-overview__reminders__header">Reminders</div>
-        <section>
-          {Reminders.map((existingApplicant) => (
-            <Reminder applicant={existingApplicant} />
-          ))}
-        </section>
-      </Card>
+      {/* need to use a mapping function here */}
+      <div className="mh-overview__applications">
+        <Card>
+          <div className="mh-overview__applications__header">
+            Latest Applications
+            <span className="more-button">
+              More <ArrowForwardIcon className="arrow-forward-icon" />
+            </span>
+          </div>
+          {renderLatestApplications()}
+        </Card>
+      </div>
+
+      <div className="mh-overview__reminders">
+        <Card>
+          <div className="mh-overview__reminders__header">Reminders</div>
+          <section>
+            {Reminders.map((existingApplicant) => (
+              <Reminder applicant={existingApplicant} />
+            ))}
+          </section>
+        </Card>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Overview;
